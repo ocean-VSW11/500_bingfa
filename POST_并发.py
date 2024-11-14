@@ -44,7 +44,7 @@ def send_request(url, data, headers):
     headers (dict): 请求头
     """
     try:
-        response = requests.post(url, json=data, headers=headers, verify=False)
+        response = requests.get(url, json=data, headers=headers, verify=False)
         status_code = response.status_code
         # 如果请求成功，记录状态码
         logging.info(f"Status Code: {status_code}, Response Body:{response.text}")
@@ -76,11 +76,11 @@ def send_requests_concurrently(url, data, num_requests, headers):
 ###############################################
 
 # 前置条件：设置签名和头信息
-url = "http://222.85.202.67:688/api/crm/web/companyInfo/addOrganization"  # 替换为实际的 API 端点
+url = "http://192.168.6.160:8080/system/user/100?"  # 替换为实际的 API 端点
 appid = "GJX0000000001001"
 key = "gjx2023123456789"
 version = "1.0"
-token = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjo0MzQyOTksImNvbXBhbnlOYW1lIjpudWxsLCJ1c2VyX2tleSI6IjJhZDYzNTU0LWE5ZWYtNGYzNy05NmY3LTkxNWFiMGFlYzI4MSIsInVzZXJuYW1lIjoid3dfdGVzdCJ9.nKL1RMH8MbH9uUCrylHcA5GbDrZFO7h_hO2qKuAKnvdN4C_4Ne-nF3mVrADf5VxPKUPe2_5-uJYNhBXLTW97tw"  # 替换为实际的 token
+token = "eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJjb21wYW55TmFtZSI6bnVsbCwidXNlcl9rZXkiOiJmMjg0YjgzYS1jOTNjLTRiYzUtYWNhMC0wMjlkYzMxNGI4ODciLCJ1c2VybmFtZSI6ImFkbWluIn0.c0Gd5LNcGB5ae2oze41LlVGhsPTE3_tzvVuEvin68Tsf7ZWgUfvirVXRHiKbXCiu59WCsR8PTj_1W_opYwVfJQ"  # 替换为实际的 token
 
 # 获取当前时间戳
 timestamp = str(int(time.time()))
@@ -117,8 +117,8 @@ encrypted_data = encrypt_aes(data, aes_key, iv)
 
 # 示例数据
 json_payload = {
-  "timestamp": 1729237963034,
-  "sign": "43fa6df1853e8e372527e2ab44104128",
+  "timestamp": 1731319975428,
+  "sign": "d88dc2eaf2862e1a217f2351d28b9006",
   "data": encrypted_data
 }
 
